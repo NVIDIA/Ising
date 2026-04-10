@@ -4,7 +4,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Hugging Face](https://img.shields.io/badge/HuggingFace-Models-FFD21E?logo=huggingface)](https://huggingface.co/collections/nvidia/ising)
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-Models-FFD21E?logo=huggingface)](https://huggingface.co/collections/nvidia/nvidia-ising)
 
 > This repository is the central landing page for the NVIDIA Ising family of quantum computing tools, models, and cookbooks. For code, see the repositories below.
 
@@ -29,7 +29,7 @@ The Ising model family is available on Hugging Face:
 |-------|-------------|------|
 | **NVIDIA-Ising-Calibration-1** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/NVIDIA-Ising-Calibration-1) |
 
-Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/ising)
+Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
 
 ---
 
@@ -39,7 +39,6 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 |------------|-------------|
 | [ising-calibration](https://github.com/NVIDIA/ising-calibration) | Cookbook and Quantum Calibration Agent Blueprint — AI-powered agent for discovering, executing, and analyzing quantum calibration experiments |
 | [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | AI predecoder for quantum error correction |
-| [ising-gpu](https://github.com/NVIDIA/ising-gpu) | GPU-accelerated Monte Carlo simulations of the 2D Ising model |
 
 ---
 
