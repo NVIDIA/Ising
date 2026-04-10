@@ -13,6 +13,7 @@
 ## Table of Contents
 
 - [Models](#models)
+- [Datasets](#datasets)
 - [Repositories](#repositories)
 - [Cookbooks](#cookbooks)
 - [Issues & Support](#issues--support)
@@ -27,9 +28,19 @@ The Ising model family is available on Hugging Face:
 
 | Model | Description | Link |
 |-------|-------------|------|
-| **NVIDIA-Ising-Calibration-1** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/NVIDIA-Ising-Calibration-1) |
+| **Ising-Calibration-1-35B-A3B** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/Ising-Calibration-1-35B-A3B) |
+| **Ising-Decoder-SurfaceCode-1-1.79M** | AI predecoder for surface code quantum error correction (1.79M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-1.79M) |
+| **Ising-Decoder-SurfaceCode-1-712k** | AI predecoder for surface code quantum error correction (712k params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-712k) |
 
 Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
+
+---
+
+## Datasets
+
+| Dataset | Description | Link |
+|---------|-------------|------|
+| **QCalEval** | Evaluation dataset for quantum calibration agents | [HuggingFace](https://huggingface.co/datasets/nvidia/QCalEval) |
 
 ---
 
