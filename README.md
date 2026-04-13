@@ -1,154 +1,96 @@
-# __NVIDIA_OSS__ Standard Repo Template
+# NVIDIA Ising
 
-This README file is from the NVIDIA_OSS standard repo template of [PLC-OSS-Template](https://github.com/NVIDIA-GitHub-Management/PLC-OSS-Template?tab=readme-ov-file). It provides a list of files in the PLC-OSS-Template and guidelines on how to use (clone and customize) them.
+**Open models, tools, and cookbooks for quantum computing — from device calibration to error correction.**
 
-**Upon completing the customization for the project repo, the repo admin should replace this README template with the project specific README file.**
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-Models-FFD21E?logo=huggingface)](https://huggingface.co/collections/nvidia/nvidia-ising)
 
-- Files (org-wide templates in the NVIDIA .github org repo; per-repo overrides allowed) in [PLC-OSS-Template](https://github.com/NVIDIA-GitHub-Management/PLC-OSS-Template?tab=readme-ov-file)
+> This repository is the central landing page for the NVIDIA Ising family of quantum computing tools, models, and cookbooks. For code, see the repositories below.
 
-   - Root 
-     - README.md skeleton (CTA + Quickstart + Support/Security/Governance links) 
-     - LICENSE (Apache 2.0 by default)
-        - For other licenses, see the [Confluence page](https://confluence.nvidia.com/pages/viewpage.action?pageId=788418816) for other licenses
-        - CLA.md file (delete if not using MIT or BSD licenses)
-     - CODE_OF_CONDUCT.md 
-     - SECURITY.md (vuln reporting path) 
-     - CONTRIBUTING.md (base; repo can add specifics)
-     - SUPPORT.md (Support levels/channels)
-     - GOVERNANCE.md (baseline; repo may extend)
-     - CITATION.md (for projects that need citation)
+---
 
-   - .github/ 
-     - ISSUE_TEMPLATE/ (<https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository>)
-       - bug.yml, feature.yml, task.yml, config.yml 
-     - PULL_REQUEST_TEMPLATE.md (<https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository>)
-     - workflows/
-     - Note: workflow-templates/ for starter workflows should live in the org-level .github repo, not per-repo
+## Table of Contents
 
-   - Repo-specific (not org-template, maintained by the team)
-     - CODEOWNERS (place at .github/CODEOWNERS or repo root)
-     - CHANGELOG.md (or RELEASE.md) 
-     - ROADMAP.md 
-     - MAINTAINERS.md 
-     - NOTICE or THIRD_PARTY_NOTICES / THIRD_PARTY_LICENSES (dependency specific)
-     - Build/package files (CMake, pyproject, Dockerfile, etc.)
+- [Models](#models)
+- [Datasets](#datasets)
+- [Repositories](#repositories)
+- [Cookbooks](#cookbooks)
+- [Issues & Support](#issues--support)
+- [Contributing](#contributing)
+- [License](#license)
 
-   - Recommended structure and hygiene
-     - docs/
-     - examples/
-     - tests/
-     - scripts/
-     - Container/dev env: Dockerfile, docker/, .devcontainer/ (optional)
-     - Build/package (language-specific):
-       - Python: pyproject.toml, setup.cfg/setup.py, requirements.txt, environment.yml
-       - C++: CMakeLists.txt, cmake/, vcpkg.json
-     - Repo hygiene: .gitignore, .gitattributes, .editorconfig, .pre-commit-config.yaml, .clang-format
+---
 
+## Models
 
-## Usage of [PLC-OSS-Template](https://github.com/NVIDIA-GitHub-Management/PLC-OSS-Template?tab=readme-ov-file) for NEW NVIDIA OSS repos
+The Ising model family is available on Hugging Face:
 
-1. Clone the [PLC-OSS-Template](https://github.com/NVIDIA-GitHub-Management/PLC-OSS-Template?tab=readme-ov-file)
-2. Find/replace all in the clone of `___PROJECT___` and `__PROJECT_NAME__` with the name of the specific project.
-3. Inspect all files to make sure all replacements work and update text as needed
+| Model | Description | Link |
+|-------|-------------|------|
+| **Ising-Calibration-1-35B-A3B** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/Ising-Calibration-1-35B-A3B) |
+| **Ising-Decoder-SurfaceCode-1-1.79M** | AI predecoder for surface code quantum error correction (1.79M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-1.79M) |
+| **Ising-Decoder-SurfaceCode-1-712k** | AI predecoder for surface code quantum error correction (712k params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-712k) |
 
+Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
 
-**What you can reuse immediately**
-- CODE_OF_CONDUCT.md
-- SECURITY.md
-- CONTRIBUTING.md (base)
-- .github/ISSUE_TEMPLATE/.yml (bug/feature/task + config.yml)
-- .github/PULL_REQUEST_TEMPLATE.md
-- Reusable workflows 
+---
 
-**What you must customize per repo**
-- README.md: copy the skeleton and fill in product-specific details (Quickstart, Requirements, Usage, Support level, links)
-- LICENSE: check file is correct, update year, consult Confluence for alternatives https://confluence.nvidia.com/pages/viewpage.action?pageId=788418816, add CLA.md only if your license/process requires it
-- CODEOWNERS: replace <TEAM> with your GitHub team handle(s). Place at .github/CODEOWNERS (or repo root)
-- MAINTAINERS.md: list maintainers names/roles, escalation path
-- CHANGELOG.md (or RELEASE.md): track releases/changes
-- SUPPORT.md: Update for your project
-- ROADMAP.md (optional): upcoming milestones
-- NOTICE / THIRD_PARTY_NOTICES (if you ship third‑party content)
-- Build/package files (CMake/pyproject/Dockerfile/etc.), tests/, docs/, examples/, scripts/ as appropriate
-- Workflows: Edit if you need custom behavior 
+## Datasets
 
+| Dataset | Description | Link |
+|---------|-------------|------|
+| **QCalEval** | Evaluation dataset for quantum calibration agents | [HuggingFace](https://huggingface.co/datasets/nvidia/QCalEval) |
 
-4. Change git origin to point to new repo and push
-5. Remove the line break below and everything above it
+---
 
-## Usage for existing NVIDIA OSS repos
+## Repositories
 
-1. Follow the steps above, but add the files to your existing repo and merge
+| Repository | Description |
+|------------|-------------|
+| [ising-calibration](https://github.com/NVIDIA/ising-calibration) | Cookbook and Quantum Calibration Agent Blueprint — AI-powered agent for discovering, executing, and analyzing quantum calibration experiments |
+| [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | AI predecoder for quantum error correction |
 
-<!-- REMOVE THE LINE BELOW AND EVERYTHING ABOVE -->
------------------------------------------
-# [Project Title]
-One-sentence value proposition for users. Who is it for, and why it matters. 
+---
 
-# Overview
-What the project does? Why the project is useful?
-Provide a brief overview, highlighting key features or problem-solving capabilities.
+## Cookbooks
 
-# Getting Started
-Guide users on how they can get started with the project. This should include basic installation step, quick-start examples 
-```bash
-# Option A: Package manager (pip/conda/npm/etc.)
-<copy-paste install>
+Practical guides and tutorials organized by repository:
 
-# Option B: Container
-docker run <image> <args>
+### [ising-calibration](https://github.com/NVIDIA/ising-calibration)
 
-# Verify (hello world)
-<one-liner or ~10-line example>
-```
-# Requirements
-Include a list of pre-requisites. 
-- OS/Arch: <summary or link to full matrix>
-- Runtime/Compiler: <versions>
-- GPU/Drivers (if applicable): CUDA <ver>, driver <ver>, etc.
+| Guide | Description |
+|-------|-------------|
+| [Quick Start](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/quick-start) | Installation and first run |
+| [Tutorial](https://github.com/NVIDIA/ising-calibration/blob/main/cookbook/tutorial.md) | End-to-end walkthrough: experiments, workflows, and the knowledge base |
+| [User Guide](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/user-guide) | CLI reference, experiment storage, workflows, and knowledge base |
+| [Developer Guide](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/developer-guide) | Architecture, contributing, and extending the agent |
+| [vLLM Local Model Setup](https://github.com/NVIDIA/ising-calibration/blob/main/cookbook/vllm-local-model-setup.md) | Run the VLM locally with vLLM |
 
-# Usage
-```bash
-# Minimal runnable snippet (≤20 lines)
-<code>
-```
-- More examples/tutorials: <link>
-- API reference: <link>
+---
 
-# Performance (Optional)
-Summary of benchmarks; link to detailed results and hardware used.
+## Issues & Support
 
-## Releases & Roadmap 
-- Releases/Changelog: <link>
-- (Optional) Next milestones or link to `ROADMAP.md`.
-  
-# Contribution Guidelines
-- Start here: `CONTRIBUTING.md`
-- Code of Conduct: `CODE_OF_CONDUCT.md`
-- Development quickstart (build/test):
-```bash
-<clone> && <deps> && <build/test>
-```
-## Governance & Maintainers
-- Governance: `GOVERNANCE.md`
-- Maintainers: <team/handles>
-- Labeling/triage policy: <link>
+This repository is the central place to file issues across the NVIDIA Ising family:
 
-## Security
-- Vulnerability disclosure: `SECURITY.md`
-- Do not file public issues for security reports.
+- **Bug reports** — [Open an issue](https://github.com/NVIDIA/ising/issues/new?template=bug.yml)
+- **Feature requests** — [Open an issue](https://github.com/NVIDIA/ising/issues/new?template=feature.yml)
+- **Questions & Discussion** — [Start a discussion](https://github.com/NVIDIA/ising/discussions)
 
-## Support
-- Level: <Experimental | Maintained | Stable>
-- How to get help: Issues/Discussions/<channel link>
-- Response expectations (if any).
+For security vulnerabilities, do not file a public issue — see [SECURITY.md](SECURITY.md).
 
-# Community
-Provide the channel for community communications.
+---
 
-# References
-Provide a list of related references
+## Contributing
 
-# License
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-- License: <link>
+Contributions are welcome across all Ising repositories. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests.
+
+---
+
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE) for details.
+
+---
+
+**NVIDIA Ising** — Open quantum computing tools for the next generation of quantum hardware.
