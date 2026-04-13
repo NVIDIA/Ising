@@ -81,12 +81,6 @@ For security vulnerabilities, do not file a public issue — see [SECURITY.md](S
 
 ---
 
-## Contributing
-
-Contributions are welcome across all Ising repositories. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests.
-
----
-
 ## License
 
 Apache 2.0 — see [LICENSE](LICENSE) for details.
