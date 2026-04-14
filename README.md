@@ -31,7 +31,7 @@ The Ising model family is available on Hugging Face:
 |-------|-------------|------|
 | **Ising-Calibration-1-35B-A3B** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/Ising-Calibration-1-35B-A3B) |
 | **Ising-Decoder-SurfaceCode-1-Accurate** | AI predecoder for surface code quantum error correction (1.79M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Accurate) |
-| **Ising-Decoder-SurfaceCode-1-Fast** | AI predecoder for surface code quantum error correction (712k params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Fast) |
+| **Ising-Decoder-SurfaceCode-1-Fast** | AI predecoder for surface code quantum error correction (0.91M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Fast) |
 
 Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
 
