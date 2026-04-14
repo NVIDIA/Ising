@@ -17,7 +17,6 @@
 - [Repositories](#repositories)
 - [Cookbooks](#cookbooks)
 - [Issues & Support](#issues--support)
-- [Contributing](#contributing)
 - [License](#license)
 
 ---
@@ -29,8 +28,8 @@ The Ising model family is available on Hugging Face:
 | Model | Description | Link |
 |-------|-------------|------|
 | **Ising-Calibration-1-35B-A3B** | Vision-language model for quantum device calibration | [HuggingFace](https://huggingface.co/nvidia/Ising-Calibration-1-35B-A3B) |
-| **Ising-Decoder-SurfaceCode-1-1.79M** | AI predecoder for surface code quantum error correction (1.79M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-1.79M) |
-| **Ising-Decoder-SurfaceCode-1-712k** | AI predecoder for surface code quantum error correction (712k params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-712k) |
+| **Ising-Decoder-SurfaceCode-1-Accurate** | AI predecoder for surface code quantum error correction (1.79M params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Accurate) |
+| **Ising-Decoder-SurfaceCode-1-Fast** | AI predecoder for surface code quantum error correction (712k params) | [HuggingFace](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Fast) |
 
 Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
 
@@ -48,8 +47,8 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 
 | Repository | Description |
 |------------|-------------|
-| [ising-calibration](https://github.com/NVIDIA/ising-calibration) | Cookbook and Quantum Calibration Agent Blueprint — AI-powered agent for discovering, executing, and analyzing quantum calibration experiments |
-| [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | AI predecoder for quantum error correction |
+| [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | Training Framework for AI Decoding |
+| [Quantum-Calibration-Agent-Blueprint](https://github.com/NVIDIA/quantum-calibration-agent-blueprint) | Quantum Calibration Agent Blueprint — AI-powered agent for discovering, executing, and analyzing quantum calibration experiments |
 
 ---
 
@@ -57,16 +56,11 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 
 Practical guides and tutorials organized by repository:
 
-### [ising-calibration](https://github.com/NVIDIA/ising-calibration)
+### [ising-decoding](https://github.com/NVIDIA/ising-decoding)
 
 | Guide | Description |
 |-------|-------------|
-| [Quick Start](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/quick-start) | Installation and first run |
-| [Tutorial](https://github.com/NVIDIA/ising-calibration/blob/main/cookbook/tutorial.md) | End-to-end walkthrough: experiments, workflows, and the knowledge base |
-| [User Guide](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/user-guide) | CLI reference, experiment storage, workflows, and knowledge base |
-| [Developer Guide](https://github.com/NVIDIA/ising-calibration/tree/main/cookbook/developer-guide) | Architecture, contributing, and extending the agent |
-| [vLLM Local Model Setup](https://github.com/NVIDIA/ising-calibration/blob/main/cookbook/vllm-local-model-setup.md) | Run the VLM locally with vLLM |
-
+|[Ising-Decoder-Tutorial](https://github.com/NVIDIA/Ising-Decoding/blob/main/cookbook/predecoder.ipynb) | Training, Optimized Inference, Quantizing an AI Pre-decoder |
 ---
 
 ## Issues & Support
