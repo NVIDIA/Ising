@@ -64,7 +64,6 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 | Repository | Description |
 |------------|-------------|
 | [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | Training Framework for AI Decoding |
-| [Quantum-Calibration-Agent-Blueprint](https://github.com/NVIDIA/quantum-calibration-agent-blueprint) | Quantum Calibration Agent Blueprint — AI-powered agent for discovering, executing, and analyzing quantum calibration experiments |
 
 ---
 
