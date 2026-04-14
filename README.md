@@ -64,6 +64,8 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 | Repository | Description |
 |------------|-------------|
 | [Ising-Decoding](https://github.com/NVIDIA/Ising-Decoding) | Training Framework for AI Decoding |
+| [Quantum Calibration Agent Blueprint](https://github.com/NVIDIA/Quantum-Calibration-Agent-Blueprint/) | Agentic workflow blueprint for Quantum Comptuer Calibration VLMs |
+| [QCalEval](https://github.com/NVIDIA/QCalEval) | Open benchmark for assessing VLM capabilities on quantum calibration experiment analysis |
 
 ---
 
@@ -76,6 +78,7 @@ Practical guides and tutorials organized by repository:
 | Guide | Description |
 |-------|-------------|
 |[Ising-Decoder-Tutorial](https://github.com/NVIDIA/Ising-Decoding/blob/main/cookbook/predecoder.ipynb) | Training, Optimized Inference, Quantizing an AI Pre-decoder |
+|[Quantum Calibration Agent Documentation](https://github.com/NVIDIA/Quantum-Calibration-Agent-Blueprint/tree/main/docs) | Documentation to get started with an agentic workflow for quantum computer calibration |
 ---
 
 ## Issues & Support
@@ -96,4 +99,4 @@ Apache 2.0 — see [LICENSE](LICENSE) for details.
 
 ---
 
-**NVIDIA Ising** — Open quantum computing tools for the next generation of quantum hardware.
+**Open models, tools, and cookbooks for quantum computing — from device calibration to error correction.**
