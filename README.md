@@ -13,6 +13,8 @@
 ## Table of Contents
 
 - [Models](#models)
+- [NIMs](#nims)
+- [Model API Endpoints](#model-api-endpoint)
 - [Datasets](#datasets)
 - [Repositories](#repositories)
 - [Cookbooks](#cookbooks)
@@ -34,6 +36,20 @@ The Ising model family is available on Hugging Face:
 Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://huggingface.co/collections/nvidia/nvidia-ising)
 
 ---
+## NIMs
+
+| NIM | Description |
+|------------|-------------|
+| [**Ising-Calibration-1-35B-A3B**](https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/ising-calibration-1-35b-a3b) | Ready to deploy NIM for Ising-Calibration-1 |
+
+---
+
+## Model API Endpoint
+
+| API | Description |
+|------------|-------------|
+| [**Ising-Calibration-1-35B-A3B**](https://build.nvidia.com/nvidia/ising-calibration-1-35b-a3b) | Build.nvidia.com for Ising-Calibration-1 API endpoint |
+
 
 ## Datasets
 
@@ -56,7 +72,7 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 
 Practical guides and tutorials organized by repository:
 
-### [ising-decoding](https://github.com/NVIDIA/ising-decoding)
+### [Ising-Decoding](https://github.com/NVIDIA/ising-decoding)
 
 | Guide | Description |
 |-------|-------------|
