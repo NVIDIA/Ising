@@ -25,7 +25,7 @@ Ising-QEC/
 
 ## Prerequisites
 
-- FAS-RC Cannon account with `kempner_dev` / `kempner_eng` access.
+- FAS-RC Cannon account with access to GPU partitions. 
 - `singularity-ce` 4.x on submit host.
 - `git-lfs` installed (needed to pull the `.pt` weights).
 - `~/.bashrc` provides `SINGULARITY_CACHEDIR` and `SINGULARITY_TMPDIR` under netscratch.
@@ -33,7 +33,9 @@ Ising-QEC/
 ## First-time setup
 
 ```bash
-cd /n/netscratch/kempner_dev/Lab/bdesinghu/Agent/Ising-QEC
+git clone https://github.com/dmbala/Ising-QEC
+
+cd Ising-QEC
 
 # Container (one-shot, ~15-20 min on netscratch).
 singularity build --fakeroot env/ising.sif env/ising.def
