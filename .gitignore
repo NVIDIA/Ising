@@ -39,6 +39,9 @@ env/build.log
 # Training outputs (checkpoints, hydra dumps, tensorboard)
 outputs/
 
+# Upstream clone (fetched on demand)
+Ising-Decoding/
+
 # Large source datasets (GDB-17 SMILES files, ~50-314 MB each)
 GDB17.*.smi.gz
 

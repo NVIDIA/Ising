@@ -34,7 +34,11 @@ From: nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
         --extra-index-url https://pypi.org/simple
 
     # FP8 TensorRT export path (workflows 2 and 3 in Ising-Decoding).
-    pip install --no-cache-dir tensorrt
+    # Pin the cu12 variant explicitly — the plain `tensorrt` package on recent
+    # releases pulls tensorrt_cu13_libs, which needs a newer host driver than
+    # some kempner_eng nodes have and breaks FP8/INT8 calibration with
+    # "CUDA initialization failure with error: 35".
+    pip install --no-cache-dir 'tensorrt-cu12>=10.8,<10.13'
     # Optional zero-copy GPU transfers for the cuStabilizer path.
     pip install --no-cache-dir cupy-cuda12x || true
 
@@ -42,7 +46,10 @@ From: nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04
         print('torch', torch.__version__, 'cuda', torch.version.cuda); \
         print('stim', stim.__version__); \
         print('pymatching', pymatching.__version__); \
-        print('tensorrt', tensorrt.__version__)"
+        print('tensorrt', tensorrt.__version__); \
+        import importlib; \
+        libs = next((m for m in ('tensorrt_cu12_libs','tensorrt_libs') if importlib.util.find_spec(m)), None); \
+        print('tensorrt_libs_pkg', libs)"
 
 %environment
     export PATH=/opt/venv/bin:$PATH
