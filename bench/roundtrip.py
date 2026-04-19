@@ -233,7 +233,8 @@ def main() -> None:
     for i in range(args.iters):
         torch.cuda.synchronize()
         start.record(stream)
-        graph.replay()
+        with torch.cuda.stream(stream):
+            graph.replay()
         end.record(stream)
         torch.cuda.synchronize()
         eng.append(start.elapsed_time(end) * 1000.0)
