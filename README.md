@@ -29,6 +29,8 @@ The Ising model family is available on Hugging Face:
 
 | Model | Description |
 |-------|-------------|
+| [**Ising-Calibration-1.5-31B-BF16**](https://huggingface.co/nvidia/Ising-Calibration-1.5-31B-BF16) | 31B vision-language model for quantum calibration plot understanding (BF16) |
+| [**Ising-Calibration-1.5-31B-NVFP4**](https://huggingface.co/nvidia/Ising-Calibration-1.5-31B-NVFP4) | Optimized NVFP4 variant of Ising-Calibration-1.5 |
 | [**Ising-Calibration-1-35B-A3B**](https://huggingface.co/nvidia/Ising-Calibration-1-35B-A3B) | Vision-language model for quantum device calibration |
 | [**Ising-Decoder-ColorCode-1-Fast**](https://huggingface.co/nvidia/Ising-Decoder-ColorCode-1-Fast) | AI predecoder for color code quantum error correction (2.94M params) |
 | [**Ising-Decoder-SurfaceCode-1-Accurate**](https://huggingface.co/nvidia/Ising-Decoder-SurfaceCode-1-Accurate) | AI predecoder for surface code quantum error correction (1.79M params) | 
@@ -41,6 +43,7 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 
 | NIM | Description |
 |------------|-------------|
+| [**Ising-Calibration-1.5-31B**](https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/ising-calibration-1-5-31b) | Ready-to-deploy NIM for Ising-Calibration-1.5 |
 | [**Ising-Calibration-1-35B-A3B**](https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/ising-calibration-1-35b-a3b) | Ready to deploy NIM for Ising-Calibration-1 |
 
 ---
@@ -49,7 +52,7 @@ Browse the full collection: [NVIDIA Ising Collection on Hugging Face](https://hu
 
 | API | Description |
 |------------|-------------|
-| [**Ising-Calibration-1-35B-A3B**](https://build.nvidia.com/nvidia/ising-calibration-1-35b-a3b) | Build.nvidia.com for Ising-Calibration-1 API endpoint |
+| [**Ising-Calibration-1.5-31B**](https://build.nvidia.com/nvidia/ising-calibration-1.5-31b) | Hosted API endpoint for Ising-Calibration-1.5 |
 
 
 ## Datasets
