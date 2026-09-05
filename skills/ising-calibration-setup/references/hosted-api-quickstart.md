@@ -85,21 +85,19 @@ This returns a standard OpenAI-compatible chat completion response, e.g.:
     {
       "index": 0,
       "message": {"role": "assistant", "content": "..."},
-      "finish_reason": "length"
+      "finish_reason": "stop"
     }
   ],
-  "usage": {"prompt_tokens": 14, "completion_tokens": 8, "total_tokens": 22}
+  "usage": {"prompt_tokens": 14, "completion_tokens": 187, "total_tokens": 201}
 }
 ```
 
-Served via vLLM (visible in the `system_fingerprint` field).
-
 ## Hello world: describe a real calibration plot
 
-The text-only ping above just proves auth works -- it does not exercise the
-model's actual job (reading a calibration plot). This pulls one real sample
-image from the public QCalEval benchmark dataset (no local test image
-needed) and asks the model to describe it. The image request shape
+The text-only ping above proves auth works; this optional request goes further
+and exercises the multimodal path. It pulls one real sample image from the
+public QCalEval benchmark dataset (no local test image needed) and asks the
+model to describe it. The image request shape
 (`type: image_url`) comes from the
 [Hugging Face model card](https://huggingface.co/nvidia/Ising-Calibration-1.5-31B-BF16);
 the build.nvidia.com interactive code tab currently ships with the request
@@ -137,12 +135,9 @@ data-URI encoding needed for a publicly reachable image. The QCalEval
 parameter), so always fetch a fresh one via the dataset API rather than
 hardcoding a URL from a prior run.
 
-## Suggested parameters
-
-- `temperature`: ~0.2
-- `max_tokens`: 8192 for zero-shot use, up to 32767 for in-context-learning
-  style prompts with more examples in context
-- Context length: up to 262144 tokens
+If `jq` is not installed, the same two steps work with `python3` -- parse
+`rows[0].row.images[0].src` out of the dataset response and substitute it into
+the JSON body.
 
 ## Terms
 
@@ -152,5 +147,5 @@ model page).
 ## Note on credentials
 
 This `nvapi-` key is a **different credential** from the NGC personal key
-used to pull and run the self-hosted NIM (see
-`../references/self-hosted-nim-quickstart.md`). They are not interchangeable.
+used to pull the self-hosted NIM image (see
+`self-hosted-nim-quickstart.md`). They are not interchangeable.
