@@ -105,9 +105,9 @@ The `-v` flag is what makes that second download reusable. It reads as
 ```
 -v "$LOCAL_NIM_CACHE:/opt/nim/.cache"
     |                 |
-    |                 └─ where the container writes weights. Fixed by the
+    |                 +- where the container writes weights. Fixed by the
     |                    image (its NIM_CACHE_PATH); do not change it.
-    └─ a directory on your machine, ~/.cache/nim by default. Change this
+    +- a directory on your machine, ~/.cache/nim by default. Change this
        freely to put the cache on a bigger disk.
 ```
 
