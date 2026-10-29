@@ -1,6 +1,6 @@
 # Self-hosted NIM quickstart
 
-- Container: `nvcr.io/nim/nvidia/ising-calibration-1-5-31b:latest`
+- Container: `nvcr.io/nim/nvidia/ising-calibration-1-5-31b:1.5.0`
 - Catalog page: `https://catalog.ngc.nvidia.com/orgs/nim/teams/nvidia/containers/ising-calibration-1-5-31b`
 
 ## Get an NGC personal key
@@ -50,7 +50,7 @@ surfaces in two seconds rather than partway through a multi-gigabyte pull.
 
 ### Supplying the key again later
 
-`docker login` stores its credential in `~/.docker/config.json`, so routine
+`docker login` caches the credential locally, so routine
 re-pulls do not need `NGC_API_KEY` in your shell again. You need it again when
 the key expires, on a new machine, or in CI, where every run starts from a clean
 environment.
@@ -85,13 +85,13 @@ agreement that still needs accepting on the catalog page.
 export LOCAL_NIM_CACHE=${LOCAL_NIM_CACHE:-~/.cache/nim}
 mkdir -p "$LOCAL_NIM_CACHE"
 
-docker pull nvcr.io/nim/nvidia/ising-calibration-1-5-31b:latest
+docker pull nvcr.io/nim/nvidia/ising-calibration-1-5-31b:1.5.0
 
 docker run --gpus all -it --rm \
   -p 8000:8000 \
   -e NGC_API_KEY=$NGC_API_KEY \
   -v "$LOCAL_NIM_CACHE:/opt/nim/.cache" \
-  nvcr.io/nim/nvidia/ising-calibration-1-5-31b:latest
+  nvcr.io/nim/nvidia/ising-calibration-1-5-31b:1.5.0
 ```
 
 There are **two** large downloads, and they are easy to confuse:

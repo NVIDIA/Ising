@@ -1,20 +1,20 @@
 ---
 name: ising-calibration-setup
 description: >-
-  Get a verified working connection to the NVIDIA Ising Calibration model,
-  either through the hosted build.nvidia.com API or a self-hosted NIM
-  container (on your own hardware or on a cloud GPU instance). Covers auth,
-  keys, and connectivity verification only, not model usage. Use when the
-  user says "set up Ising calibration", "connect to the Ising calibration
-  model", "get an API key for Ising Calibration", "run the Ising Calibration
-  NIM", "self-host Ising Calibration", or "/ising-calibration-setup".
+  Use when connecting to the NVIDIA Ising Calibration model via the hosted
+  API or a self-hosted NIM. Covers auth, keys and connectivity checks only.
 license: Apache-2.0
+version: "0.1.0"
+permissions: [env, network, shell]
+tags: [nvidia, ising, quantum, calibration, nim, api, setup]
 metadata:
   author: "NVIDIA"
   version: "0.1.0"
   github-url: "https://github.com/NVIDIA/Ising"
-  tags: "nvidia ising quantum calibration nim api setup"
+  tags: [nvidia, ising, quantum, calibration, nim, api, setup]
 ---
+
+# Ising Calibration Setup
 
 ## Purpose
 
@@ -61,6 +61,7 @@ than by its number in the lists below.
 - "Get an API key for build.nvidia.com / Ising"
 - "Run / self-host the Ising Calibration NIM" (own hardware or a cloud GPU instance)
 - "My Ising Calibration API calls are failing, check my setup"
+- "/ising-calibration-setup"
 
 ### Prerequisites (either setup)
 
@@ -104,7 +105,7 @@ which you should read before starting.
    Setup -> Generate Personal Key) and click **Generate Personal Key**.
 3. Fill in the dialog's three required fields: **Key Name**, **Expiration**, and
    **Services Included** -- a dropdown of per-service checkboxes. **NGC Catalog**
-   is the only scope needed; it grants pulls from the public `nvcr.io` catalog,
+   is the only scope needed; it grants pulls from the public nvcr.io catalog,
    and without it `docker login` fails with an auth error even though the key is
    valid.
 4. The key is shown **once**. Have the user copy it and load it into their shell
@@ -165,6 +166,17 @@ local test image is needed. The request shape is the same either way; only the
 endpoint and model ID differ -- read the self-hosted ID from `/v1/models` rather
 than copying the hosted string across.
 
+## Examples
+
+- "I don't have a GPU, how do I try Ising Calibration?" -> hosted API path:
+  generate an nvapi- key, store it as `NVIDIA_API_KEY`, verify with the curl
+  ping in `references/hosted-api-quickstart.md`.
+- "Run the Ising Calibration NIM on our H200 box" -> self-hosted path: generate
+  an NGC personal key with the NGC Catalog scope, `docker login`, pull and run
+  the container, wait for `/v1/health/ready`.
+- "My calls return 401" -> connectivity checklist: establish which setup first,
+  then follow the matching Troubleshooting entry below.
+
 ## Next steps
 
 Once the connectivity checklist passes, this skill's job is done -- you have a
@@ -216,7 +228,7 @@ go to:
 - **Error**: container starts but the startup weight download fails.
   **Cause**: the weights come from public Hugging Face, so the usual cause is
   outbound network access from the container (proxy, firewall, DNS, or
-  `huggingface.co` blocked). **Solution**: check `docker logs <container>` for
+  huggingface.co blocked). **Solution**: check `docker logs <container>` for
   the failing URL and fix egress.
 - **Error**: connection refused on `localhost:8000` (or whichever host port
   was mapped). **Cause**: NIM container still loading weights, crashed, or the
