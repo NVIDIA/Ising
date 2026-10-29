@@ -14,9 +14,11 @@ test -n "$NVIDIA_API_KEY" && echo "NVIDIA_API_KEY is set" || echo "NVIDIA_API_KE
 If empty, go back to `hosted-api-quickstart.md` and generate the key -- do not
 proceed to step 2.
 
-Self-hosted NIM -- there is no request-time key. `NGC_API_KEY` only authenticates
-the image pull, so an empty `NGC_API_KEY` in your current shell does not break a
-container that is already running. Check that the container is up instead:
+Self-hosted NIM -- there is no request-time key. `NGC_API_KEY` is used for the
+image pull and is passed into the container at startup; the container does not
+authenticate requests. An empty `NGC_API_KEY` in your current shell therefore
+does not break a container that is already running. Check that the container
+is up instead:
 
 ```bash
 docker ps
@@ -62,8 +64,8 @@ carrying the hosted string over into a self-hosted request fails.
 | Code | Meaning | Hosted API fix | Self-hosted NIM fix |
 |------|---------|----------------------|----------------------------|
 | `200` | Working. | -- | -- |
-| `401` / `403` | Auth failure. | Regenerate `NVIDIA_API_KEY` at `build.nvidia.com/settings/api-keys`; make sure you did not accidentally export the NGC key instead. | A running NIM does not authenticate requests, so a 401 means something in front of the container is rejecting it -- a proxy or gateway, not your NGC key. |
-| `000` / connection refused / timeout | Network or service-not-ready failure, not auth. | Check general internet connectivity and that `integrate.api.nvidia.com` is reachable. | Container is not up yet or the port mapping is wrong. Run `docker ps` to confirm the container is running and `-p 8000:8000` is mapped, then `docker logs <container>` to check startup progress. On a cloud/remote instance, also check that the port is actually exposed to you (firewall / security group rules), not just bound inside the instance. |
+| `401` / `403` | Hosted API: auth failure. Self-hosted NIM: something in front of the container. | Regenerate `NVIDIA_API_KEY` at `build.nvidia.com/settings/api-keys`; make sure you did not accidentally export the NGC key instead. | A running NIM does not authenticate requests, so a 401 cannot come from the container or your NGC key. Check whatever sits between you and the container -- a reverse proxy, API gateway, or cloud load balancer -- and its credentials. To confirm, curl the container directly from the machine running Docker at `localhost:<host-port>` (left side of the `-p` mapping in `docker ps`; 8000 if unchanged); a `200` there isolates the problem to the layer in front. Do not regenerate the NGC key for this. |
+| `000` / connection refused / timeout | Network or service-not-ready failure, not auth. | Check general internet connectivity and that `integrate.api.nvidia.com` is reachable. | Container is not up yet or the port mapping is wrong. Run `docker ps` to confirm the container is running and that the `-p` mapping's host port matches the one you are curling (the quickstart uses `-p 8000:8000`; the container side is always 8000, the host side is whatever you chose), then `docker logs <container>` to check startup progress. On a cloud/remote instance, also check that the port is actually exposed to you (firewall / security group rules), not just bound inside the instance. |
 | `429` | Rate limited. | Wait and retry; check the trial terms for limits. | N/A for self-hosted. |
 | `5xx` | Server-side error. | Retry; if persistent, the hosted service may be degraded. | Check `docker logs <container>` for a crash or OOM. |
 

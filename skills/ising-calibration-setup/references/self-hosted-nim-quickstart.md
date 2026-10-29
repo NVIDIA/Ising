@@ -40,9 +40,9 @@ API (see `hosted-api-quickstart.md`) -- do not reuse one for the other.
    ```
 
    Note that this only lives in the current shell, so a new terminal will not
-   have it. That matters for `docker login`, the one command that consumes it.
-   Once login succeeds, `docker pull` uses the stored credential instead, and a
-   running container does not use the key at all.
+   have it. That matters for `docker login`, and for `docker run`, which passes
+   it into the container with `-e NGC_API_KEY=$NGC_API_KEY`. Once login succeeds,
+   `docker pull` uses the stored credential instead.
 
 The `docker login` in the next section is the real test of whether the key and
 its scopes are correct. Run it before pulling anything, so a credential problem
@@ -89,6 +89,7 @@ docker pull nvcr.io/nim/nvidia/ising-calibration-1-5-31b:latest
 
 docker run --gpus all -it --rm \
   -p 8000:8000 \
+  -e NGC_API_KEY=$NGC_API_KEY \
   -v "$LOCAL_NIM_CACHE:/opt/nim/.cache" \
   nvcr.io/nim/nvidia/ising-calibration-1-5-31b:latest
 ```
@@ -96,8 +97,18 @@ docker run --gpus all -it --rm \
 There are **two** large downloads, and they are easy to confuse:
 
 1. `docker pull` fetches the container image (~46GB on disk once unpacked).
+   It authenticates with the credential `docker login` stored.
 2. On startup the container picks a configuration suited to your GPU and
-   downloads the matching model weights.
+   downloads the matching model weights. For this image they come from the
+   public Hugging Face repositories `nvidia/Ising-Calibration-1.5-31B-BF16` and
+   `nvidia/Ising-Calibration-1.5-31B-NVFP4`, pinned to exact revisions in the
+   image's model manifest.
+
+`-e NGC_API_KEY=$NGC_API_KEY` passes your key into the container; this is the
+form NVIDIA's NIM documentation uses. The shell expands `$NGC_API_KEY` when you
+run the command, so the key must be loaded (with `read -rs`) in the same shell
+first. Because the expanded value lands in that process's command line, do not
+paste the key literally in its place.
 
 The `-v` flag is what makes that second download reusable. It reads as
 `host_path:container_path`:

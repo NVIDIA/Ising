@@ -120,8 +120,10 @@ which you should read before starting.
    `echo "$NGC_API_KEY" | docker login nvcr.io --username '$oauthtoken' --password-stdin`
    Expect `Login Succeeded`. If it fails, fix the key here rather than
    continuing to the pull.
-6. Pull and run the container, then confirm it is serving. Full command,
-   GPU/memory requirements, health check, and example request are in
+6. Pull and run the container, then confirm it is serving. Use the `docker run`
+   from the quickstart as written, including `-e NGC_API_KEY=$NGC_API_KEY`,
+   which passes the key into the container. Full command, GPU/memory
+   requirements, health check, and example request are in
    [`references/self-hosted-nim-quickstart.md`](references/self-hosted-nim-quickstart.md).
 7. Run the connectivity checklist. You can then offer the optional hello-world
    request below, the same as for the hosted API.
@@ -135,10 +137,14 @@ with copy-pasteable commands: [`references/connectivity-checklist.md`](reference
 Summary:
 
 1. Hosted API: confirm `NVIDIA_API_KEY` is set and non-empty. Self-hosted NIM:
-   there is no request-time key -- `NGC_API_KEY` only authenticates the image
-   pull -- so confirm the container is running and ready instead.
+   there is no request-time key -- `NGC_API_KEY` is used for the image pull and
+   passed into the container at startup, not sent with requests -- so confirm
+   the container is running and ready instead.
 2. Send one lightweight request against the endpoint.
-3. A `401`/`403` means the key is missing, wrong, or expired -- regenerate it.
+3. A `401`/`403` means different things per setup. Hosted API: the key is
+   missing, wrong, or expired -- regenerate it. Self-hosted NIM: the container
+   itself never returns 401, so a proxy, gateway, or load balancer in front of
+   it is rejecting the request -- check that layer, not the NGC key.
 4. A connection-refused/timeout against a self-hosted NIM means the container
    is not up yet or the port mapping is wrong -- check `docker ps` and
    container logs before assuming an auth problem.
@@ -198,8 +204,23 @@ go to:
   to the account, typically an unaccepted access agreement on the catalog page.
   **Solution**: have the user open the catalog page while signed in to confirm
   the image is visible to their account.
-- **Error**: connection refused on `localhost:8000`. **Cause**: NIM container
-  still loading weights, crashed, or the port mapping does not match.
+- **Error**: `401`/`403` from a self-hosted NIM endpoint. **Cause**: the
+  container does not authenticate requests, so the rejection comes from a
+  reverse proxy, API gateway, or load balancer in front of it. **Solution**:
+  check that layer's configuration and credentials. To confirm, bypass it:
+  on the machine running Docker, curl `localhost:<host-port>`, where the host
+  port is the left side of the `-p` flag shown by `docker ps` (8000 if the
+  quickstart command was used unchanged). A `200` there proves the container
+  is fine and the 401 comes from the layer in front. Regenerating the NGC key
+  does not help here.
+- **Error**: container starts but the startup weight download fails.
+  **Cause**: the weights come from public Hugging Face, so the usual cause is
+  outbound network access from the container (proxy, firewall, DNS, or
+  `huggingface.co` blocked). **Solution**: check `docker logs <container>` for
+  the failing URL and fix egress.
+- **Error**: connection refused on `localhost:8000` (or whichever host port
+  was mapped). **Cause**: NIM container still loading weights, crashed, or the
+  `-p` host port does not match the one being curled.
   **Solution**: check `docker ps` and `docker logs <container>`; wait for
   `/v1/health/ready` to return `200` before sending requests.
 - **Error**: `Insufficient GPU memory` / OOM on container start. **Cause**: the
