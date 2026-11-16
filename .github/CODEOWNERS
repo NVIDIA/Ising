@@ -1,0 +1,4 @@
+# Changes under .github (workflows, actions, CI scripts) require review from a
+# listed code owner. NVSkills CI onboarding asks for code-owner review on
+# .github/workflows/request-nvskills-ci.yml in particular.
+.github @anjbur @bmhowe23 @ivanbasov @ShuxiangCao @tlubowe

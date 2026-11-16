@@ -1,0 +1,43 @@
+name: Request NVSkills CI
+
+# Connects this repository to NVIDIA/nvskills-ci, which evaluates and signs the
+# skills under skills/. Verbatim copy of nvskills-ci's
+# templates/team-request-workflow.yml apart from this comment.
+#
+# How the three triggers behave:
+# - pull_request: does NOT start an evaluation. It runs the required-status
+#   gate, which passes immediately for PRs that do not touch skills/. For PRs
+#   that do, it looks for an "NVSkills CI" commit status on the PR head: it
+#   passes on success, waits (up to 4 h) while one is pending, and fails after
+#   about two minutes if there is none. So a skill PR shows this check red
+#   until a maintainer comments `/nvskills-ci` and the run succeeds; the next
+#   push or the signature commit re-runs the gate.
+# - issue_comment: a maintainer (maintain/admin) comments `/nvskills-ci` on
+#   the PR to request the evaluation and signing run.
+# - push: re-verifies after the NVSkills bot pushes its signature commit.
+#   Ordinary pushes trigger a run whose job is skipped by the condition below.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+  push:
+
+jobs:
+  request:
+    if: >
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+        github.event.issue.pull_request &&
+        startsWith(github.event.comment.body, '/nvskills-ci')) ||
+      (github.event_name == 'push' &&
+        github.actor == (vars.NVSKILLS_SIGNATURE_PUSH_ACTOR || 'nv-skills-ci[bot]') &&
+        startsWith(github.event.head_commit.message, vars.NVSKILLS_SIGNATURE_COMMIT_TITLE || 'Attach NVSkills validation signatures'))
+    permissions:
+      contents: read
+      pull-requests: read
+      statuses: read
+    uses: NVIDIA/skills/.github/workflows/team-request.yml@main
+    secrets:
+      NVSKILLS_CI_DISPATCH_TOKEN: ${{ secrets.NVSKILLS_CI_DISPATCH_TOKEN }}
