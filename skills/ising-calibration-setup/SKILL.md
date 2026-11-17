@@ -36,10 +36,9 @@ guidance lives.
 Ask the user which they want (or infer it: "I don't have a GPU" -> hosted API;
 "I need this on-prem / air-gapped / high volume" -> self-hosted NIM). Note that
 the self-hosted container still needs internet access on its first run to
-download the model weights. Then
-follow the matching section below top-to-bottom. Full command sequences live in
-`references/`; this file only handles routing, prerequisites, and the
-connectivity checklist.
+download the model weights. Then follow the matching section below
+top-to-bottom. Full command sequences live in `references/`; this file only
+handles routing, prerequisites, and the connectivity checklist.
 
 Getting the credential is where users most often get stuck, and it happens in a
 browser where you cannot see what they see. Read the relevant reference doc in
